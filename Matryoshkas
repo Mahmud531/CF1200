@@ -9,11 +9,54 @@ void solve(){
         cin>>x;
         mp[x]++;
     }
-
+	
     ll ans = 0;
     ll prev = -1;
     int prev_freq = 0;
+	/*
+	for(auto it = mp.begin(); it != mp.end();it++){
+        if(prev == -1){
+            ans += it->second;
+        }
+ 
+        else{
+            if(it->first == prev+1){
+                //consecutive
+                if(it->second>prev_freq){
+                    ans += it->second-prev_freq;
+                }
+            }
+            else{
+                //not consecutive 
+                ans += it->second;                                                                                                                        
+            }
+        }
+        prev = it->first;
+        prev_freq = it->second;
+    }
+*/
+/*
+for(auto x:mp){
+        if(prev == -1) 
+            ans += freq;
+        else{
+            if(prev+1==x.first){
+                //consecutive
+                if(x.second>prev_freq)
+                    ans += (x.second-prev_freq);
+            }
+            else{
+                ans += x.second;
+            } 
+            
+        }
+        prev = x.first;
+        prev_freq = x.second;
 
+         
+    }
+*/
+	
     for(const auto [idx,freq]:mp){
         if(prev == -1) 
             ans += freq;
