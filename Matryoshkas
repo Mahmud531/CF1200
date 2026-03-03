@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+using ll = long long;
+void solve(){
+    int n;cin>>n;
+    map<ll,int>mp;
+    for(int i = 0;i<n;i++){
+        int x;
+        cin>>x;
+        mp[x]++;
+    }
+
+    ll ans = 0;
+    ll prev = -1;
+    int prev_freq = 0;
+
+    for(const auto [idx,freq]:mp){
+        if(prev == -1) 
+            ans += freq;
+        else{
+            if(prev+1==idx){
+                //consecutive
+                if(freq>prev_freq)
+                    ans += (freq-prev_freq);
+            }
+            else{
+                ans += freq;
+            } 
+            
+        }
+        prev = idx;
+        prev_freq = freq;
+
+         
+    }
+    cout<<ans<<'\n';
+
+
+}
+int main(){
+    ios::sync_with_stdio(false);cin.tie(NULL);
+
+    int t;
+    cin>>t;
+    while(t--){
+	solve();
+    }
+
+}
